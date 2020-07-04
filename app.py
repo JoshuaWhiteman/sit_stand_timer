@@ -11,6 +11,10 @@ print("Current Time =", current_time)
 
 root = tk.Tk()
 
+root.title("Sit Stand Timer")
+
+root.resizable(0,0)
+
 canvas = tk.Canvas(root, height=200, width=400, bg="#34bccf")
 canvas.pack()
 
