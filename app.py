@@ -15,6 +15,9 @@ canvas = tk.Canvas(root, height=200, width=400, bg="#34bccf")
 canvas.pack()
 
 frame = tk.Frame(root, bg="white")
-frame.place(relwidth=0.8, relheight=0.8)
+frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
+
+resetTimer = tk.Button(root, text="Reset", padx=10, pady=5, fg="white", bg="#34bccf")
+resetTimer.pack()
 
 root.mainloop()
