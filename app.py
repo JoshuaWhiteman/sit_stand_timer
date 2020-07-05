@@ -17,6 +17,7 @@ window.title("Sit Stand Timer")
 # canvas.pack()
 
 frame = tk.Frame()
+frame.pack()
 # frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
 
 # resetTimer = tk.Button(window, text="Reset", padx=10, pady=5, fg="white", bg="#34bccf")
