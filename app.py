@@ -9,19 +9,19 @@ now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 print("Current Time =", current_time)
 
-root = tk.Tk()
+window = tk.Tk()
 
-root.title("Sit Stand Timer")
+window.title("Sit Stand Timer")
 
-root.resizable(0,0)
+window.resizable(0,0)
 
-canvas = tk.Canvas(root, height=200, width=400, bg="#34bccf")
+canvas = tk.Canvas(window, height=200, width=400, bg="#34bccf")
 canvas.pack()
 
-frame = tk.Frame(root, bg="white")
+frame = tk.Frame(window, bg="white")
 frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
 
-resetTimer = tk.Button(root, text="Reset", padx=10, pady=5, fg="white", bg="#34bccf")
+resetTimer = tk.Button(window, text="Reset", padx=10, pady=5, fg="white", bg="#34bccf")
 resetTimer.pack()
 
-root.mainloop()
+window.mainloop()
