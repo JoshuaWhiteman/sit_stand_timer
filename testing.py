@@ -4,7 +4,9 @@ from datetime import datetime
 
 #Countdown
 t = 0
-def countdown(t):
+def countdown():
+    t = int(ent_timer.get())
+
     while t:
         mins, secs = divmod(t, 60)
         timeformat = '{:02d}:{:02d}'.format(mins, secs)
@@ -19,16 +21,15 @@ window.title("Testing")
 
 display_countdown = tk.StringVar()
 
-frame_a = tk.Frame()
-frame_a.pack()
+frm_entry = tk.Frame(master=window)
+ent_timer = tk.Entry(master=frm_entry, width=10)
+lbl_sec = tk.Label(master=frm_entry, text="Seconds")
 
-label = tk.Label(master=frame_a, text="testing frame_a")
-label.pack()
+ent_timer.grid(row=0, column=0, sticky="e")
+lbl_sec.grid(row=0, column=1, sticky="w")
+frm_entry.grid(row=0, column=0, padx=10)
 
-time_label= tk.Label(master=window, textvariable=display_countdown)
-time_label.pack()
-
-start_button = tk.Button(window, text="start", height=10, width=10, command=countdown(10))
-start_button.pack()
+btn_start = tk.Button(master=window, text="START", command=countdown)
+btn_start.grid(row=0, column=1, pady=10)
 
 window.mainloop()
