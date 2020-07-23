@@ -1,29 +1,38 @@
-import time
-from datetime import datetime
 import tkinter as tk
-from tkinter import filedialog, Text
-import os
+from win10toast import ToastNotifier
 
-# now = datetime.now()
+toaster = ToastNotifier()
 
-# current_time = now.strftime("%H:%M:%S")
-# print("Current Time =", current_time)
+def countdown(count):
+    # change text in label
+    mins, secs = divmod(count, 60)
+    timeformat = '{:02d}:{:02d}'.format(mins, secs)        
+    label['text'] = timeformat
 
-window = tk.Tk()
-window.title("Sit Stand Timer")
-# window.resizable(0,0)
+    if count > 0:
+        # call countdown again after 1000ms (1s)
+        root.after(1000, countdown, count-1)
+    else:
+        label['text'] = 'SWITCH!'
+        toaster.show_toast("SWITCH!", duration=10, threaded=True)
 
-# canvas = tk.Canvas(window, height=200, width=400, bg="#34bccf")
-# canvas.pack()
+def reset():
+    if label['text'] == 'SWITCH!':
+        countdown(1800)
+    
 
-frame = tk.Frame()
-frame.pack()
-# frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
+root = tk.Tk()
 
-# resetTimer = tk.Button(window, text="Reset", padx=10, pady=5, fg="white", bg="#34bccf")
-# resetTimer.pack()
+root.geometry("250x60") 
 
-timer = tk.Label(text="frame 1 testing")
-timer.pack()
+root.title("Sit/Stand Timer") 
 
-window.mainloop()
+label = tk.Label(root, font='Arial')
+label.pack()
+
+resetButton = tk.Button(root, text="RESET", font='Arial', bg='#2cd4f2', command=reset)
+resetButton.pack()
+  
+countdown(1800)
+
+root.mainloop()
